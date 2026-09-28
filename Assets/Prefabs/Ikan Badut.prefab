@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7944859080297983614}
   - component: {fileID: 5789998323529765234}
   - component: {fileID: 919090477686508883}
+  - component: {fileID: -5463400418561713174}
   m_Layer: 0
   m_Name: Ikan Badut
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 2055513886, guid: c4e17acf0b94f0945884d6ccbb0ac1db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -163,3 +164,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   nextLevelPrefab: {fileID: 0}
+--- !u!114 &-5463400418561713174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035836157673187060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d40e549d654cc34080d85d0102b7e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openEyes: {fileID: 2055513886, guid: c4e17acf0b94f0945884d6ccbb0ac1db, type: 3}
+  closedEyes: {fileID: -1664889676, guid: c4e17acf0b94f0945884d6ccbb0ac1db, type: 3}
+  minOpenTime: 1
+  maxOpenTime: 3
+  blinkDuration: 0.15
