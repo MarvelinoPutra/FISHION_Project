@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 919090477686508883}
   - component: {fileID: -5463400418561713174}
   m_Layer: 0
-  m_Name: Ikan Badut
-  m_TagString: Untagged
+  m_Name: fish_level0
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.029620027, y: 0.029620027, z: 0.029620027}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.61841774, y: -0.7421007}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 9.776289
 --- !u!114 &919090477686508883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  nextLevelPrefab: {fileID: 0}
+  nextLevelPrefab: {fileID: 9035836157673187060, guid: ea822637e44cd3a418bde75234320d58, type: 3}
 --- !u!114 &-5463400418561713174
 MonoBehaviour:
   m_ObjectHideFlags: 0
