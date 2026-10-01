@@ -40,13 +40,13 @@ public class Fish : MonoBehaviour
         Destroy(this.gameObject);
 
         // 3. Tambah skor (Diamankan dengan pengecekan agar tidak bikin crash)
-        if (GameManager.Instance != null)
+/*        if (GameManager.Instance != null)
         {
             GameManager.Instance.AddScore(level + 1);
         }
         else
         {
             Debug.LogWarning("Peringatan: GameManager belum ada di Scene, tapi merge berhasil!");
-        }
+        }*/
     }
 }

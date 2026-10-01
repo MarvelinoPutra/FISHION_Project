@@ -171,7 +171,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 341539602}
   minX: -2
   maxX: 2
-  nextSpawnDelay: 1
+  nextSpawnDelay: 0.6
 --- !u!114 &75164265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 781127577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.051853, y: 2.17, z: 0.03539896}
+  m_LocalPosition: {x: -2.051853, y: 2.54, z: 0.03539896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,7 +637,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030976534, y: -0.3299117}
+  m_Offset: {x: 0.030976534, y: -0.4834473}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -648,7 +648,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.2611375, y: 0.3291483}
+  m_Size: {x: 5.2611375, y: 0.6362195}
   m_EdgeRadius: 0
 --- !u!114 &781127580
 MonoBehaviour:
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1c013d2f226a540a7f524afd3af762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGameOver: 4
+  timeToGameOver: 1
 --- !u!1 &1031742075
 GameObject:
   m_ObjectHideFlags: 0
