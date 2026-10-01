@@ -24,20 +24,29 @@ public class Fish : MonoBehaviour
     void Merge(Fish other)
     {
         // Mencegah kedua ikan sama-sama memicu Merge() secara bersamaan
-        // (karena OnCollisionEnter2D terpanggil di kedua objek)
         if (this.GetInstanceID() > other.GetInstanceID()) return;
 
         Vector2 mergePos = (transform.position + other.transform.position) / 2f;
 
+        // 1. Munculkan ikan baru
         if (nextLevelPrefab != null)
         {
-            Instantiate(nextLevelPrefab, mergePos, Quaternion.identity);
+            GameObject newFish = Instantiate(nextLevelPrefab, mergePos, Quaternion.identity);
+            newFish.name = nextLevelPrefab.name; // Opsional: menghilangkan tulisan (Clone)
         }
 
-        // Tambah skor lewat GameManager (dibahas di bagian 7)
-        GameManager.Instance.AddScore(level + 1);
-
+        // 2. HANCURKAN IKAN LAMA TERLEBIH DAHULU (Supaya dijamin pasti hilang)
         Destroy(other.gameObject);
         Destroy(this.gameObject);
+
+        // 3. Tambah skor (Diamankan dengan pengecekan agar tidak bikin crash)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddScore(level + 1);
+        }
+        else
+        {
+            Debug.LogWarning("Peringatan: GameManager belum ada di Scene, tapi merge berhasil!");
+        }
     }
 }

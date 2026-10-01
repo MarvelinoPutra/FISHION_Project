@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 919090477686508883}
   - component: {fileID: -5463400418561713174}
   m_Layer: 0
-  m_Name: fish_level1
+  m_Name: fish_level5
   m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9abeaf72f5a274a891a4829cb28e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  nextLevelPrefab: {fileID: 9035836157673187060, guid: 0a7af0a6a9023274296cf7f1a63c40ec, type: 3}
+  level: 5
+  nextLevelPrefab: {fileID: 9035836157673187060, guid: a366a4409ffbaa54b93f76ba6d0223be, type: 3}
 --- !u!114 &-5463400418561713174
 MonoBehaviour:
   m_ObjectHideFlags: 0
