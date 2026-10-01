@@ -199,6 +199,9 @@ MonoBehaviour:
   spawnablePrefabs:
   - {fileID: 9035836157673187060, guid: a908baca1644d2947a18ab86dcfff784, type: 3}
   - {fileID: 9035836157673187060, guid: ea822637e44cd3a418bde75234320d58, type: 3}
+  - {fileID: 9035836157673187060, guid: 0a7af0a6a9023274296cf7f1a63c40ec, type: 3}
+  - {fileID: 9035836157673187060, guid: 1065c1d80beb6ed4795f0a0d0f381761, type: 3}
+  - {fileID: 9035836157673187060, guid: 4dc0764eaffc526429e1eae57991f872, type: 3}
 --- !u!1 &215992484
 GameObject:
   m_ObjectHideFlags: 0
