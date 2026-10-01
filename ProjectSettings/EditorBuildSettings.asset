@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/mainMenuNajma.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: dbb7e4a167ab4cc4ca46e3f5d6b48442
   - enabled: 1
     path: Assets/Settings/mainMenuNajma.unity
