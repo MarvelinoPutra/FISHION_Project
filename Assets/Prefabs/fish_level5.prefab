@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5011620238921199245}
   - component: {fileID: 3049959000926726197}
   - component: {fileID: 7944859080297983614}
-  - component: {fileID: 5789998323529765234}
   - component: {fileID: 919090477686508883}
   - component: {fileID: -5463400418561713174}
+  - component: {fileID: 1193366315361047748}
   m_Layer: 0
   m_Name: fish_level5
   m_TagString: Fish
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 9035836157673187060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.039126694, y: 0.039126694, z: 0.039126694}
+  m_LocalPosition: {x: -1.6492, y: 0.5659, z: 0}
+  m_LocalScale: {x: 0.07773127, y: 0.07773127, z: 0.07773127}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 836015833
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 554324701, guid: 2fb6c1dbb38c02b42b1fc799a74b95b9, type: 3}
+  m_Sprite: {fileID: 1206897205, guid: b5ae13ce02f8e8f4ca7440019fc6b77b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,8 +115,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5789998323529765234
-CircleCollider2D:
+--- !u!114 &919090477686508883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035836157673187060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a9abeaf72f5a274a891a4829cb28e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 5
+  nextLevelPrefab: {fileID: 9035836157673187060, guid: a366a4409ffbaa54b93f76ba6d0223be, type: 3}
+--- !u!114 &-5463400418561713174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9035836157673187060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d40e549d654cc34080d85d0102b7e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openEyes: {fileID: 1206897205, guid: b5ae13ce02f8e8f4ca7440019fc6b77b, type: 3}
+  closedEyes: {fileID: -2050764666, guid: b5ae13ce02f8e8f4ca7440019fc6b77b, type: 3}
+  minOpenTime: 4
+  maxOpenTime: 7
+  blinkDuration: 1
+--- !u!61 &1193366315361047748
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,37 +178,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.114738464, y: -0.9179239}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 21.295198, y: 16.54}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 10.539772
---- !u!114 &919090477686508883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9035836157673187060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9abeaf72f5a274a891a4829cb28e7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 5
-  nextLevelPrefab: {fileID: 9035836157673187060, guid: a366a4409ffbaa54b93f76ba6d0223be, type: 3}
---- !u!114 &-5463400418561713174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9035836157673187060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d40e549d654cc34080d85d0102b7e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openEyes: {fileID: 554324701, guid: 2fb6c1dbb38c02b42b1fc799a74b95b9, type: 3}
-  closedEyes: {fileID: -1550149992, guid: 2fb6c1dbb38c02b42b1fc799a74b95b9, type: 3}
-  minOpenTime: 1
-  maxOpenTime: 3
-  blinkDuration: 0.15
+  m_Size: {x: 21.295198, y: 16.54}
+  m_EdgeRadius: 0
