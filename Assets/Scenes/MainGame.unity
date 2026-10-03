@@ -171,7 +171,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 341539602}
   minX: -2
   maxX: 2
-  nextSpawnDelay: 0.6
+  nextSpawnDelay: 1
 --- !u!114 &75164265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 781127577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.051853, y: 2.54, z: 0.03539896}
+  m_LocalPosition: {x: -2.051853, y: 2.17, z: 0.03539896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,7 +637,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030976534, y: -0.4834473}
+  m_Offset: {x: 0.030976534, y: -0.3299117}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -648,7 +648,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.2611375, y: 0.6362195}
+  m_Size: {x: 5.2611375, y: 0.3291483}
   m_EdgeRadius: 0
 --- !u!114 &781127580
 MonoBehaviour:
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1c013d2f226a540a7f524afd3af762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToGameOver: 1
+  timeToGameOver: 4
 --- !u!1 &1031742075
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,6 +673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1031742076}
   - component: {fileID: 1031742077}
+  - component: {fileID: 1031742078}
   m_Layer: 0
   m_Name: Aquarium
   m_TagString: Untagged
@@ -739,8 +740,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -1475375044, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 573257339, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -751,6 +752,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1031742078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031742075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28b2cca1efd4294f9328e6329fed5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frames:
+  - {fileID: -1475375044, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 573257339, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 1378786340, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 587764713, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 84964441, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 59566364, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: -592441459, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: -1474529459, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: 1252762386, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: -1781877569, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: -952895820, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  - {fileID: -1387866296, guid: e4bbba0bea57e674080a6e80dcf28317, type: 3}
+  frameRate: 12
 --- !u!1 &1152188808
 GameObject:
   m_ObjectHideFlags: 0
