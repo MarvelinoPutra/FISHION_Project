@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using TMPro; // Wajib untuk TextMeshPro
+using TMPro;
 
 public class ScoreUIManager : MonoBehaviour
 {
@@ -8,25 +9,38 @@ public class ScoreUIManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 
-    [Header("Combo Popup (Teks)")]
-    public TextMeshProUGUI comboTextPopup;
-    public string[] comboMessages;
+    [Header("Combo Popup (Gambar)")]
+    public Image comboImagePopup;
+    public Sprite[] comboSprites;
 
-    [Header("GG GAMING Popup")]
-    public TextMeshProUGUI ggGamingTextPopup;
+    [Header("GG GAMING Popup (Gambar Acak)")]
+    public Image ggGamingImagePopup;
+    public Sprite[] ggSprites;
+
+    // --- VARIABEL BARU UNTUK MENGINGAT UKURAN ASLI DI EDITOR ---
+    private Vector3 initialComboScale = Vector3.one;
+    private Vector3 initialGGScale = Vector3.one;
 
     private void Start()
     {
-        // 1. Sembunyikan pop-up di awal
-        if (comboTextPopup != null) comboTextPopup.gameObject.SetActive(false);
-        if (ggGamingTextPopup != null) ggGamingTextPopup.gameObject.SetActive(false);
+        // Simpan ukuran aslinya sebelum disembunyikan
+        if (comboImagePopup != null)
+        {
+            initialComboScale = comboImagePopup.transform.localScale;
+            comboImagePopup.gameObject.SetActive(false);
+        }
 
-        // 2. Berlangganan event (Subscribe)
+        if (ggGamingImagePopup != null)
+        {
+            initialGGScale = ggGamingImagePopup.transform.localScale;
+            ggGamingImagePopup.gameObject.SetActive(false);
+        }
+
         if (ScoreManager.Instance != null)
         {
             ScoreManager.Instance.OnScoreChanged += UpdateScoreUI;
             ScoreManager.Instance.OnHighScoreChanged += UpdateHighScoreUI;
-            ScoreManager.Instance.OnComboAchieved += ShowComboTextPopup;
+            ScoreManager.Instance.OnComboAchieved += ShowComboPopup;
 
             UpdateScoreUI(ScoreManager.Instance.currentScore);
             UpdateHighScoreUI(ScoreManager.Instance.highScore);
@@ -40,12 +54,11 @@ public class ScoreUIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // 3. Berhenti berlangganan (Unsubscribe)
         if (ScoreManager.Instance != null)
         {
             ScoreManager.Instance.OnScoreChanged -= UpdateScoreUI;
             ScoreManager.Instance.OnHighScoreChanged -= UpdateHighScoreUI;
-            ScoreManager.Instance.OnComboAchieved -= ShowComboTextPopup;
+            ScoreManager.Instance.OnComboAchieved -= ShowComboPopup;
         }
 
         if (GameManager.Instance != null)
@@ -54,7 +67,6 @@ public class ScoreUIManager : MonoBehaviour
         }
     }
 
-    // --- FUNGSI MENGUBAH TEKS SKOR ---
     private void UpdateScoreUI(int score)
     {
         if (scoreText != null) scoreText.text = score.ToString();
@@ -65,13 +77,12 @@ public class ScoreUIManager : MonoBehaviour
         if (highScoreText != null) highScoreText.text = "Best: " + hs.ToString();
     }
 
-    // --- FUNGSI COMBO POPUP ---
-    private void ShowComboTextPopup(int comboCount)
+    private void ShowComboPopup(int comboCount)
     {
-        if (comboMessages.Length == 0 || comboTextPopup == null) return;
+        if (comboSprites.Length == 0 || comboImagePopup == null) return;
 
-        int messageIndex = Mathf.Clamp(comboCount - 2, 0, comboMessages.Length - 1);
-        comboTextPopup.text = comboMessages[messageIndex];
+        int spriteIndex = Mathf.Clamp(comboCount - 2, 0, comboSprites.Length - 1);
+        comboImagePopup.sprite = comboSprites[spriteIndex];
 
         StopAllCoroutines();
         StartCoroutine(AnimateComboPopup());
@@ -79,7 +90,7 @@ public class ScoreUIManager : MonoBehaviour
 
     private IEnumerator AnimateComboPopup()
     {
-        comboTextPopup.gameObject.SetActive(true);
+        comboImagePopup.gameObject.SetActive(true);
 
         float timer = 0;
         float duration = 0.15f;
@@ -87,28 +98,36 @@ public class ScoreUIManager : MonoBehaviour
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            float scale = Mathf.Lerp(0.5f, 1.2f, timer / duration);
-            comboTextPopup.transform.localScale = Vector3.one * scale;
+            float scaleMultiplier = Mathf.Lerp(0.5f, 1.2f, timer / duration);
+
+            // KUNCI PERBAIKAN: Kalikan animasi dengan ukuran asli dari Editor
+            comboImagePopup.transform.localScale = initialComboScale * scaleMultiplier;
             yield return null;
         }
 
-        comboTextPopup.transform.localScale = Vector3.one;
+        // Kembalikan ke ukuran asli
+        comboImagePopup.transform.localScale = initialComboScale;
         yield return new WaitForSeconds(0.7f);
-        comboTextPopup.gameObject.SetActive(false);
+        comboImagePopup.gameObject.SetActive(false);
     }
 
-    // --- FUNGSI GG GAMING POPUP ---
     private void ShowGGPopup()
     {
-        if (ggGamingTextPopup == null) return;
+        if (ggGamingImagePopup == null) return;
 
-        StopAllCoroutines(); // Hentikan animasi lain jika ada
+        if (ggSprites != null && ggSprites.Length > 0)
+        {
+            int randomIndex = Random.Range(0, ggSprites.Length);
+            ggGamingImagePopup.sprite = ggSprites[randomIndex];
+        }
+
+        StopAllCoroutines();
         StartCoroutine(AnimateGGPopup());
     }
 
     private IEnumerator AnimateGGPopup()
     {
-        ggGamingTextPopup.gameObject.SetActive(true);
+        ggGamingImagePopup.gameObject.SetActive(true);
 
         float timer = 0;
         float duration = 0.5f;
@@ -116,19 +135,21 @@ public class ScoreUIManager : MonoBehaviour
         while (timer < duration)
         {
             timer += Time.deltaTime;
-            float scale = Mathf.Lerp(0.1f, 1.5f, timer / duration);
-            ggGamingTextPopup.transform.localScale = Vector3.one * scale;
+            float scaleMultiplier = Mathf.Lerp(0.1f, 1.5f, timer / duration);
 
-            // Efek getar
-            ggGamingTextPopup.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-5f, 5f));
+            // KUNCI PERBAIKAN: Kalikan animasi dengan ukuran asli dari Editor
+            ggGamingImagePopup.transform.localScale = initialGGScale * scaleMultiplier;
+
+            ggGamingImagePopup.transform.localRotation = Quaternion.Euler(0, 0, Random.Range(-5f, 5f));
             yield return null;
         }
 
-        ggGamingTextPopup.transform.localScale = Vector3.one * 1.2f;
-        ggGamingTextPopup.transform.localRotation = Quaternion.identity;
+        // Ukuran normal akhir adalah 1.2 kali lipat dari ukuran aslinya
+        ggGamingImagePopup.transform.localScale = initialGGScale * 1.2f;
+        ggGamingImagePopup.transform.localRotation = Quaternion.identity;
 
         yield return new WaitForSeconds(2.0f);
 
-        ggGamingTextPopup.gameObject.SetActive(false);
+        ggGamingImagePopup.gameObject.SetActive(false);
     }
 }

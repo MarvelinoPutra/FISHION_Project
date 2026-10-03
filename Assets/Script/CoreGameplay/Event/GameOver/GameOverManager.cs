@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-using UnityEngine.SceneManagement; // Untuk fungsi Restart
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public Action OnGameOver;
     public bool isGameOver = false;
 
-    // --- TAMBAHKAN INI ---
     public Action OnMaxLevelReached; // Event khusus untuk level 10
 
     public void TriggerMaxLevelReached()
@@ -27,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Dipanggil oleh garis sensor saat ikan meluap
     public void TriggerGameOver()
     {
-        if (isGameOver) return; // Mencegah kepanggil berkali-kali
+        if (isGameOver) return;
         isGameOver = true;
 
         // Freeze waktu agar ikan berhenti bergerak & spawner berhenti
@@ -42,5 +41,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f; // Kembalikan waktu agar tidak beku
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    // ==========================================
+    // FUNGSI BARU: KEMBALI KE MAIN MENU
+    // ==========================================
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1f; // Wajib dikembalikan ke 1 agar Main Menu tidak ikut beku
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7944859080297983614}
   - component: {fileID: 919090477686508883}
   - component: {fileID: -5463400418561713174}
-  - component: {fileID: 1193366315361047748}
+  - component: {fileID: -8508935789291828830}
   m_Layer: 0
   m_Name: fish_level5
   m_TagString: Fish
@@ -147,7 +147,7 @@ MonoBehaviour:
   minOpenTime: 4
   maxOpenTime: 7
   blinkDuration: 1
---- !u!61 &1193366315361047748
+--- !u!61 &-8508935789291828830
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,7 +179,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.24841738, y: -0.27100372}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -190,5 +190,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.295198, y: 16.54}
+  m_Size: {x: 19.172352, y: 15.004322}
   m_EdgeRadius: 0

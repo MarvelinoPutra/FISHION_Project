@@ -33,6 +33,12 @@ public class DropperController : MonoBehaviour
 
     void Update()
     {
+        // =========================================================
+        // GUARD CLAUSE: Kalau game over, matikan kontrol pemain!
+        // =========================================================
+        if (GameManager.Instance != null && GameManager.Instance.isGameOver)
+            return;
+
         if (currentFish == null || isWaiting) return;
 
         // Baca dari PlayerInput
@@ -58,7 +64,7 @@ public class DropperController : MonoBehaviour
         // Pastikan pas dilepas, fisikanya benar-benar dinyalakan KE IKAN YANG INI DOANG
         Rigidbody2D rb = currentFish.GetComponent<Rigidbody2D>();
         Collider2D col = currentFish.GetComponent<Collider2D>();
-        Fish fishScript = currentFish.GetComponent<Fish>();
+        Fish fishScript = currentFish.GetComponent<Fish>(); // KEMBALI PAKAI FISH
 
         if (rb != null) rb.bodyType = RigidbodyType2D.Dynamic;
 
@@ -74,6 +80,11 @@ public class DropperController : MonoBehaviour
     {
         isWaiting = true;
         yield return new WaitForSeconds(nextSpawnDelay);
+
+        // Cek lagi: Jangan panggil ikan baru kalau pas nunggu jeda ini ternyata Game Over
+        if (GameManager.Instance != null && GameManager.Instance.isGameOver)
+            yield break;
+
         PrepareNewFish();
         isWaiting = false;
     }

@@ -85,7 +85,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7944859080297983614
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d40e549d654cc34080d85d0102b7e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openEyes: {fileID: 2055513886, guid: c4e17acf0b94f0945884d6ccbb0ac1db, type: 3}
-  closedEyes: {fileID: -1664889676, guid: c4e17acf0b94f0945884d6ccbb0ac1db, type: 3}
+  openEyes: {fileID: 1957348332, guid: 3daae91b61e3ebb4e89bb278dd3d9a5a, type: 3}
+  closedEyes: {fileID: 1860056336, guid: 3daae91b61e3ebb4e89bb278dd3d9a5a, type: 3}
   minOpenTime: 3
   maxOpenTime: 5
   blinkDuration: 1
@@ -179,6 +179,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.45284778, y: -0.4528108}
-  m_Size: {x: 19.604282, y: 22.207083}
+  m_Offset: {x: -0.6891662, y: -0.3515285}
+  m_Size: {x: 14.540261, y: 18.628504}
   m_Direction: 0
