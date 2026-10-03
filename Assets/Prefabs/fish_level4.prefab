@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 4
   nextLevelPrefab: {fileID: 9035836157673187060, guid: dd8f3a11dca82cf44b2f51cb99863567, type: 3}
+  bubblePopEffectPrefab: {fileID: 2507369090735733165, guid: 45ea816e701bc264b83d02d5644a98ba, type: 3}
 --- !u!114 &-5463400418561713174
 MonoBehaviour:
   m_ObjectHideFlags: 0

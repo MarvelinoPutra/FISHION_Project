@@ -6,6 +6,7 @@ public class Fish : MonoBehaviour
 {
     public int level;                  // Level ikan ini (0 = paling kecil)
     public GameObject nextLevelPrefab; // Prefab ikan hasil merge (level + 1)
+    public GameObject bubblePopEffectPrefab; // drag prefab BubblePopParticle di sini
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,6 +34,12 @@ public class Fish : MonoBehaviour
         {
             GameObject newFish = Instantiate(nextLevelPrefab, mergePos, Quaternion.identity);
             newFish.name = nextLevelPrefab.name; // Opsional: menghilangkan tulisan (Clone)
+        }
+
+        // di dalam Merge():
+        if (bubblePopEffectPrefab != null)
+        {
+            Instantiate(bubblePopEffectPrefab, mergePos, Quaternion.identity);
         }
 
         // 2. HANCURKAN IKAN LAMA TERLEBIH DAHULU (Supaya dijamin pasti hilang)
