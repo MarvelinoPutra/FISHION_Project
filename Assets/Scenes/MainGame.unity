@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21b3cb377774174cb7f407757a436dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterGravityScale: 0.75
+  waterGravityScale: 1.5
   waterDrag: 4
 --- !u!61 &1548335611
 BoxCollider2D:
@@ -2770,8 +2770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145.7, y: 301.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -141.9, y: 298.73}
+  m_SizeDelta: {x: 188.44, y: 33.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562401645
 MonoBehaviour:
