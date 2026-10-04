@@ -39,7 +39,7 @@ To run this project locally on your machine:
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/USERNAME_KAMU/Fishion.git](https://github.com/USERNAME_KAMU/Fishion.git)
+   git clone [https://github.com/MarvelinoPutra/FISHION_Project.git](https://github.com/MarvelinoPutra/FISHION_Project.git)
 Open Unity Hub, click Add, and select the cloned repository folder.
 
 Ensure you are using Unity version 2022.3 LTS (or your current version).
