@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Memastikan script Input dan Spawner harus ada di objek yang sama
 [RequireComponent(typeof(PlayerInput))]
@@ -11,6 +12,7 @@ public class DropperController : MonoBehaviour
     public float minX = -2.5f;
     public float maxX = 2.5f;
     public float nextSpawnDelay = 1f;
+    public Image nextFishPreviewImage;
 
     // Referensi ke dua script lainnya
     private PlayerInput playerInput;
@@ -93,5 +95,14 @@ public class DropperController : MonoBehaviour
     {
         // Minta ikan baru dari FishSpawner
         currentFish = fishSpawner.SpawnRandomFish(spawnPoint.position);
+        UpdatePreview();
+    }
+
+    void UpdatePreview() // ⬅️ TAMBAHAN
+    {
+        if (nextFishPreviewImage != null)
+        {
+            nextFishPreviewImage.sprite = fishSpawner.GetNextFishSprite();
+        }
     }
 }
