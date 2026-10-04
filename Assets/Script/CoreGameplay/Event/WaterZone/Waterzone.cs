@@ -3,21 +3,23 @@ using UnityEngine;
 public class Waterzone : MonoBehaviour
 {
     [Header("Pengaturan Fisika Dalam Air")]
-    public float waterGravityScale = 0.5f; // Gravitasi melayang
+    public float waterGravityScale = 0.5f; // Gravitasi melayang/lambat
     public float waterDrag = 4.0f;         // Hambatan air (viskositas)
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Cek apakah objek yang menembus garis adalah Ikan (punya Rigidbody2D)
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-
-        if (rb != null)
+        // Pastikan kita hanya memproses ikan (objek yang punya script FishMechanic)
+        // Ini mencegah error kalau objek lain nggak sengaja masuk
+        if (other.GetComponent<Fish>() != null)
         {
-            // Ubah fisika ikan menjadi gaya dalam air SEKALI SAJA saat lewat
-            rb.gravityScale = waterGravityScale;
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
 
-            // Properti yang benar untuk Rigidbody2D adalah .drag
-            rb.drag = waterDrag;
+            if (rb != null)
+            {
+                // Ubah fisika ikan menjadi gaya dalam air SEKALI SAJA saat lewat
+                rb.gravityScale = waterGravityScale;
+                rb.drag = waterDrag;
+            }
         }
     }
 }

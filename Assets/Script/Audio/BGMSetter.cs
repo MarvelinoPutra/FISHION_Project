@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class BGMSetter : MonoBehaviour
 {
@@ -14,4 +14,4 @@ public class BGMSetter : MonoBehaviour
             SoundManager.Instance.ChangeBGM(laguSceneIni);
         }
     }
-}
+}*/

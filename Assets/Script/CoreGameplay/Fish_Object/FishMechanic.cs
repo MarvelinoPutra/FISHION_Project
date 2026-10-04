@@ -24,6 +24,36 @@ public class Fish : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Collider2D col = GetComponent<Collider2D>();
+
+        if (rb != null)
+        {
+            // 1. MASSA OTOMATIS: Level makin tinggi, ikan makin berat!
+            rb.mass = 1f + (this.level * 0.5f);
+
+            // 2. ANTI-TEMBUS TEMBOK (SANGAT PENTING!)
+            // Wajib Continuous agar Unity menghitung tabrakan frame-per-frame 
+            // sehingga ikan tidak akan pernah tembus EdgeCollider2D!
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+
+            // 3. BIKIN MATERIAL LICIN & MEMANTUL VIA SCRIPT (Gak perlu repot di Inspector)
+            PhysicsMaterial2D suikaMaterial = new PhysicsMaterial2D("MaterialIkan");
+            suikaMaterial.friction = 0.05f;   // Sangat licin (sisik ikan)
+            suikaMaterial.bounciness = 0.4f;  // Memantul juicy
+
+            // Pasang materialnya ke collider ikan
+            if (col != null)
+            {
+                col.sharedMaterial = suikaMaterial;
+            }
+        }
+
+        // (Taruh kode lain milikmu di bawah sini jika ada)
+    }
+
     private void Merge(Fish other)
     {
         // Mencegah dua ikan memicu Merge secara bersamaan (mencegah bug spawn ganda)

@@ -141,6 +141,14 @@ public class ScoreUIManager : MonoBehaviour
             ggGamingImagePopup.sprite = ggSprites[randomIndex];
         }
 
+        // ==========================================
+        // TAMBAHKAN KODE INI AGAR SUARA GG BERBUNYI
+        // ==========================================
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayGGSound();
+        }
+
         StopAllCoroutines();
         StartCoroutine(AnimateGGPopup());
     }

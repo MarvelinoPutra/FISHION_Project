@@ -1,32 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Wajib ditambahkan agar bisa mengakses komponen UI Canvas
 
-public class SpriteSequencePlayer : MonoBehaviour
+public class ImageSequencePlayer : MonoBehaviour
 {
-    public Sprite[] frames;       // isi 12 sprite di sini, urut dari frame 0 - 11
+    public Sprite[] frames;       // isi sprite di sini, urut dari frame awal sampai akhir
     public float frameRate = 12f; // berapa frame per detik
 
-    private SpriteRenderer sr;
+    private Image img;            // BERUBAH: Menggunakan Image, bukan SpriteRenderer
     private int currentFrame;
     private float timer;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
+        // BERUBAH: Mengambil komponen Image dari Canvas
+        img = GetComponent<Image>();
     }
 
     void Start()
     {
-        if (frames.Length > 0)
+        if (frames.Length > 0 && img != null)
         {
-            sr.sprite = frames[0];
+            img.sprite = frames[0];
         }
     }
 
     void Update()
     {
-        if (frames.Length == 0) return;
+        if (frames.Length == 0 || img == null) return;
 
         timer += Time.deltaTime;
         float frameDuration = 1f / frameRate;
@@ -35,7 +37,9 @@ public class SpriteSequencePlayer : MonoBehaviour
         {
             timer -= frameDuration;
             currentFrame = (currentFrame + 1) % frames.Length; // balik ke 0 lagi setelah frame terakhir
-            sr.sprite = frames[currentFrame];
+
+            // BERUBAH: Memasukkan gambar ke komponen Image
+            img.sprite = frames[currentFrame];
         }
     }
 }

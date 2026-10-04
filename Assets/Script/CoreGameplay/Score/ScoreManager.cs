@@ -30,9 +30,15 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        // Sinkronkan high score ScoreManager dengan database SaveManager saat game mulai
+        if (SaveManager.Instance != null)
+        {
+            highScore = SaveManager.Instance.dataDatabase.skorTertinggi;
+        }
         // Beri tahu UI nilai awal saat game mulai
         OnHighScoreChanged?.Invoke(highScore);
         OnScoreChanged?.Invoke(currentScore);
+
     }
 
     // Dipanggil oleh ikan saat nge-fuse
@@ -64,6 +70,12 @@ public class ScoreManager : MonoBehaviour
             highScore = currentScore;
             PlayerPrefs.SetInt("HighScore", highScore);
             OnHighScoreChanged?.Invoke(highScore);
+            // Simpan juga ke database Android!
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.dataDatabase.skorTertinggi = highScore;
+                SaveManager.Instance.SaveData();
+            }
         }
     }
 }

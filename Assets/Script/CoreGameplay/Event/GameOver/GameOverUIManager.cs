@@ -39,11 +39,26 @@ public class GameOverUIManager : MonoBehaviour
         // 1. Matikan Canvas Gameplay (Teks skor atas, tombol pause, dll menghilang)
         if (gamePlayCanvas != null) gamePlayCanvas.SetActive(false);
 
+        // 1. Hentikan lagu BGM yang sedang berputar biar dramatis (Opsional)
+        if (SoundManager.Instance != null && SoundManager.Instance.bgmSource != null)
+        {
+            SoundManager.Instance.bgmSource.Stop();
+        }
+
+        // 2. Putar suara Game Over!
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayGameOverSound();
+        }
+
         // 2. Ambil data secara independen dari ScoreManager! (SRP Peak)
+        // Ambil data skor dengan aman
         if (ScoreManager.Instance != null)
         {
             int scoreAkhir = ScoreManager.Instance.currentScore;
-            int rekorTertinggi = ScoreManager.Instance.highScore;
+
+            // AMBIL HIGH SCORE LANGSUNG DARI DATABASE ANDROID (SAVE MANAGER)
+            int rekorTertinggi = SaveManager.Instance != null ? SaveManager.Instance.dataDatabase.skorTertinggi : ScoreManager.Instance.highScore;
 
             finalScoreText.text = "Score\n" + scoreAkhir.ToString();
             finalHighScoreText.text = "High Score\n" + rekorTertinggi.ToString();
