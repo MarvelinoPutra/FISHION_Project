@@ -8,6 +8,7 @@ public class Fish : MonoBehaviour
     [Header("Visual Effects (VFX)")]
     public GameObject bubblePopEffectPrefab; // Drag prefab BubblePopParticle di sini
 
+    private bool isMerging = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 1. GUARD CLAUSE: Jangan lakukan apa-apa kalau game sudah over
@@ -56,9 +57,17 @@ public class Fish : MonoBehaviour
 
     private void Merge(Fish other)
     {
+
+         // FAILSAFE: cegah merge terjadi lebih dari sekali
+        if (isMerging || other.isMerging)
+        return;
+
         // Mencegah dua ikan memicu Merge secara bersamaan (mencegah bug spawn ganda)
         if (this.GetInstanceID() > other.GetInstanceID()) return;
 
+        isMerging = true;
+        other.isMerging = true;
+        
         Vector2 mergePos = (transform.position + other.transform.position) / 2f;
 
         // ==========================================
