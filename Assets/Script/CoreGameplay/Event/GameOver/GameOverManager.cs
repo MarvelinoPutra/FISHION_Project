@@ -10,12 +10,10 @@ public class GameManager : MonoBehaviour
     public Action OnGameOver;
     public bool isGameOver = false;
 
-    public Action OnMaxLevelReached; // Event khusus untuk level 10
+    public Action OnMaxLevelReached;
 
-    public void TriggerMaxLevelReached()
-    {
-        OnMaxLevelReached?.Invoke();
-    }
+    [Header("UI Tutorial")]
+    public GameObject tutorialPanel; // Tarik UI Tutorialmu ke sini di Inspector
 
     private void Awake()
     {
@@ -23,54 +21,88 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // Dipanggil oleh garis sensor saat ikan meluap
-    // 1. Versi kalau dipanggil TANPA skor (seperti dari GameOverLine)
+    private void Start()
+    {
+        // ==========================================
+        // CEK TUTORIAL SAAT MAIN GAME DIMULAI
+        // ==========================================
+        if (SaveManager.Instance != null && SaveManager.Instance.dataDatabase != null)
+        {
+            if (SaveManager.Instance.dataDatabase.sudahTutorial == false)
+            {
+                // Belum pernah main -> Munculkan tutorial, freeze waktu
+                if (tutorialPanel != null) tutorialPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                // Sudah pernah main -> Sembunyikan tutorial
+                if (tutorialPanel != null) tutorialPanel.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+    }
+
+    // ==========================================
+    // FUNGSI UNTUK TOMBOL "OK" DI TUTORIAL
+    // ==========================================
+    public void TutupTutorial()
+    {
+        // 1. Simpan ingatan ke JSON Android
+        if (SaveManager.Instance != null && SaveManager.Instance.dataDatabase != null)
+        {
+            SaveManager.Instance.dataDatabase.sudahTutorial = true;
+            SaveManager.Instance.SaveData();
+        }
+
+        // 2. Sembunyikan UI dan jalankan gamenya
+        if (tutorialPanel != null) tutorialPanel.SetActive(false);
+        if (SoundManager.Instance != null) SoundManager.Instance.PlayClickSound();
+
+        Time.timeScale = 1f; // Jalankan waktu kembali
+    }
+
+    public void TriggerMaxLevelReached()
+    {
+        OnMaxLevelReached?.Invoke();
+    }
+
     public void TriggerGameOver()
     {
-        // Kamu bisa ganti angka 0 di bawah dengan variabel skor yang sedang aktif di gamemu (misal: currentScore)
         TriggerGameOver(0);
     }
 
-    // 2. Versi kalau dipanggil DENGAN membawa data skor
     public void TriggerGameOver(int skorSekarang)
     {
         if (isGameOver) return;
         isGameOver = true;
 
-        // Cek apakah skor sekarang lebih besar dari skor tertinggi di database?
-        if (skorSekarang > SaveManager.Instance.dataDatabase.skorTertinggi)
+        if (SaveManager.Instance != null && SaveManager.Instance.dataDatabase != null)
         {
-            // Update datanya
-            SaveManager.Instance.dataDatabase.skorTertinggi = skorSekarang;
-
-            // Simpan ke HP Android
-            SaveManager.Instance.SaveData();
+            if (skorSekarang > SaveManager.Instance.dataDatabase.skorTertinggi)
+            {
+                SaveManager.Instance.dataDatabase.skorTertinggi = skorSekarang;
+                SaveManager.Instance.SaveData();
+            }
         }
 
-        // Freeze waktu agar ikan berhenti bergerak & spawner berhenti
         Time.timeScale = 0f;
-
-        // Berteriak ke semua script UI bahwa game sudah berakhir!
         OnGameOver?.Invoke();
     }
 
-    // Dipanggil oleh tombol Restart di UI
     public void RestartGame()
     {
-        // Putar suara klik
         if (SoundManager.Instance != null) SoundManager.Instance.PlayClickSound();
-        Time.timeScale = 1f; // Kembalikan waktu agar tidak beku
+        Time.timeScale = 1f;
+        isGameOver = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // ==========================================
-    // FUNGSI BARU: KEMBALI KE MAIN MENU
-    // ==========================================
     public void ReturnToMainMenu()
     {
-        // Putar suara klik
         if (SoundManager.Instance != null) SoundManager.Instance.PlayClickSound();
-        Time.timeScale = 1f; // Wajib dikembalikan ke 1 agar Main Menu tidak ikut beku
+        Time.timeScale = 1f;
+        isGameOver = false;
         SceneManager.LoadScene("MainMenu");
     }
 }

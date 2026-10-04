@@ -45,3 +45,6 @@ TagManager:
   - name: Fish
     uniqueID: 836015833
     locked: 0
+  - name: UI
+    uniqueID: 3127897259
+    locked: 0

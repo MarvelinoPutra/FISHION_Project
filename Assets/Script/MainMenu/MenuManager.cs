@@ -35,46 +35,46 @@ public class MenuManager : MonoBehaviour
         if (SaveManager.Instance != null)
         {
             // Jika pemain belum pernah menyelesaikan tutorial
-            if (SaveManager.Instance.dataDatabase.tutorialSelesai == false)
+            if (SaveManager.Instance.dataDatabase.sudahTutorial == false)
             {
                 // Langsung buka panel tutorial secara otomatis!
                 Tutorial(); 
 
                 // Ubah statusnya menjadi true supaya di masa depan tidak muncul terus
-                SaveManager.Instance.dataDatabase.tutorialSelesai = true;
+                SaveManager.Instance.dataDatabase.sudahTutorial = true;
                 SaveManager.Instance.SaveData(); // Simpan perubahan ke memori HP Android
             }
         }
     }
     public void PlayGame()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         SceneManager.LoadSceneAsync("MainGame");
     }
 
     public void ExitGame()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         Application.Quit();
     }
 
     public void Settings()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         Menu.SetActive(false);
         Setting.SetActive(true);
     }
 
     public void Credits()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         Menu.SetActive(false);
         Credits_UI.SetActive(true);
     }
 
     public void BackToMenu()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         Menu.SetActive(true);
         Setting.SetActive(false);
         Credits_UI.SetActive(false);
@@ -86,7 +86,7 @@ public class MenuManager : MonoBehaviour
     // =====================================
     public void Tutorial()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         Menu.SetActive(false);
         Tutorial_UI.SetActive(true);
 
@@ -96,7 +96,7 @@ public class MenuManager : MonoBehaviour
 
     public void LanjutTutorial()
     {
-        PutarSuaraKlik();
+        //PutarSuaraKlik();
         indeksTutorial++; // Geser ke gambar berikutnya
 
         // Cek apakah masih ada sisa gambar tutorial

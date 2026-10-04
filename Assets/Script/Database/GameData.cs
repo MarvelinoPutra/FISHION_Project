@@ -9,7 +9,7 @@ public class GameData
     // ==========================================
 
     public int skorTertinggi; // High Score
-    public bool tutorialSelesai; // Apakah pemain sudah pernah lihat tutorial?
+    public bool sudahTutorial = false;
 
     // (Bisa tambah pengaturan volume kalau mau, dll)
     // public float musicVolume;
@@ -18,6 +18,6 @@ public class GameData
     public GameData()
     {
         skorTertinggi = 0;
-        tutorialSelesai = false;
+        sudahTutorial = false;
     }
 }
