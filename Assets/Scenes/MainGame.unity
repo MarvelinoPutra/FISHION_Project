@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 341539602}
-  minX: -1.5
-  maxX: 1.5
+  minX: -2
+  maxX: 2
   nextSpawnDelay: 1
   nextFishPreviewImage: {fileID: 677081700}
 --- !u!114 &75164265
